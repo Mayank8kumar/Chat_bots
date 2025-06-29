@@ -10,7 +10,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
 ## Function to load Gemini Pro Vision model.
 
-model=genai.GenerativeModel("gemini-pro-vision")
+model=genai.GenerativeModel("gemini-2.5-flash")
 # chat=model.start_chat(history=[])
 
 
@@ -23,7 +23,7 @@ def get_gemini_response(input,image):
     else:
         response=model.generate_content(image)
 
-    return response
+    return response.text
 
 
 ## Initialize out streamlit app
