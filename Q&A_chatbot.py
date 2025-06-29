@@ -12,6 +12,7 @@ genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model=genai.GenerativeModel("gemini-pro")
 chat=model.start_chat(history=[])
 
+## Funtion that stores the responses as well
 
 def get_gemini_response(question):
     '''
@@ -19,6 +20,15 @@ def get_gemini_response(question):
     '''
     response=chat.send_message(question,stream=True)
     return response
+
+# #### Another way of sending the response 
+
+# def get_gemini_response(question):
+#     '''
+#     This function returns the response of the question asked
+#     '''
+#     response=model.generate_content(question)
+#     return response.text               
 
 
 ### Initializing our streamlit app
@@ -35,6 +45,15 @@ if 'chat_history' not in st.session_state:
 input=st.text_input("Input:",key="input")
 submit=st.button("Ask the question")
 
+### Way of sending the response ( without chat history )
+
+# if submit:
+#     response=get_gemini_response(input)
+#     st.subheader("The Response is")
+#     st.write(response)
+
+
+### Another way of getting the response ( with chat history )
 if submit and input:
     response=get_gemini_response(input)
     
