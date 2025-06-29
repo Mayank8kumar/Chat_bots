@@ -3,7 +3,7 @@ import os
 import io
 import base64
 import pdf2image
-import PyPDF2
+import PyPDF2 as pdf
 import google.generativeai as genai
 from PIL import Image
 from dotenv import load_dotenv
