@@ -8,9 +8,19 @@ load_dotenv()
 
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-prompt="""You are Yotube video summarizer. You will be taking the transcript text
-and summarizing the entire video and providing the important summary in points
-within 250 words. Please provide the summary of the text given here:  """
+prompt="""You are a professional YouTube content summarizer.
+
+Given the full transcript of a video, your task is to analyze the entire content and generate a concise summary that captures the key points, insights, and takeaways.
+
+Please follow these instructions:
+1. Write the summary in **bullet points**.
+2. Limit the overall summary to **within 250 words**.
+3. Ensure the summary is **factual, non-repetitive**, and **chronologically structured**.
+4. Focus on the **core message, important data, key events, or ideas** conveyed in the video.
+
+If any part of the transcript is unclear or lacks information, skip speculative assumptions.
+
+**Transcript to summarize:**"""
 
 
 def generate_gemini_content(transcript_text,prompt):

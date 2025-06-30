@@ -48,12 +48,22 @@ def get_vector_store(text_chunks):
 ## Function holds the model and prompt
 def get_conversational_chain():
     prompt_template = """
-    Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
-    provided context just say, "answer is not available in the context", don't provide the wrong answer\n\n
-    Context:\n {context}?\n
-    Question: \n{question}\n
+    You are a highly knowledgeable assistant. Use the provided context to answer the question with as much detail and accuracy as possible.
 
-    Answer:
+Instructions:
+- Base your answer **strictly on the context** provided.
+- If the answer is **not found** in the context, respond with: **"The answer is not available in the context."**
+- Do **not infer, guess, or fabricate** information outside the given content.
+
+---
+
+Context:
+\n{context}\n
+
+Question:
+\n{question}\n
+
+Answer:
     """
     model=ChatGoogleGenerativeAI(model="gemini=pro",temprature=0.3)
 
